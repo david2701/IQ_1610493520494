@@ -1,0 +1,1531 @@
+openapi: 3.0.0
+info:
+  x-skaffolder-id-project: 5ffe2e29a3e049112323b0d7
+  title: IQ
+  description: You can obtain JWT token from login API
+  version: 0.1
+servers:
+  - url: http://localhost:3000/api
+    description: Local server for testing
+paths:
+  /login:
+    post:
+      x-skaffolder-ignore: true
+      summary: Login API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              example:
+                username: admin
+                password: 62f264d7ad826f02a8af714c0a54b197935b717656b80461686d450f7b3abde4c553541515de2052b9af70f710f0cd8a1a2d3f4d60aa72608d71a63a9a93c0f5
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /verifyToken:
+    post:
+      x-skaffolder-ignore: true
+      summary: Verify token API
+      security: []
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /changePassword:
+    post:
+      x-skaffolder-ignore: true
+      summary: Change password API
+      tags:
+        - Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                passwordNew:
+                  type: string
+                passwordOld:
+                  type: string
+      responses:
+        "200":
+          description: OK
+  /league:
+    post:
+      x-skaffolder-id: 5ffe33c5a3e049112323b191
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-resource: League
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - League
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/League"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                country:
+                  type: string
+                league_id:
+                  type: integer
+                name:
+                  type: string
+                season:
+                  type: integer
+                team_id:
+                  type: integer
+    get:
+      x-skaffolder-id: 5ffe33c5a3e049112323b197
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-resource: League
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - League
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/League"
+  "/league/{id}":
+    delete:
+      x-skaffolder-id: 5ffe33c5a3e049112323b198
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-resource: League
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - League
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5ffe33c5a3e049112323b192
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-resource: League
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - League
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/League"
+    post:
+      x-skaffolder-id: 5ffe33c5a3e049112323b193
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-resource: League
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - League
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/League"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/League"
+  /matches:
+    post:
+      x-skaffolder-id: 5ffe3824a3e049112323b1aa
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-resource: Matches
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Matches
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Matches"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                away_team:
+                  type: string
+                home_team:
+                  type: string
+                league_id:
+                  type: integer
+                match_id:
+                  type: integer
+                match_start:
+                  type: string
+                status:
+                  type: integer
+                status_code:
+                  type: integer
+    get:
+      x-skaffolder-id: 5ffe3824a3e049112323b1ae
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-resource: Matches
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Matches
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Matches"
+  "/matches/{id}":
+    delete:
+      x-skaffolder-id: 5ffe3824a3e049112323b1af
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-resource: Matches
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Matches
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5ffe3824a3e049112323b1a9
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-resource: Matches
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Matches
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Matches"
+    post:
+      x-skaffolder-id: 5ffe3824a3e049112323b1a8
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-resource: Matches
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Matches
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Matches"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Matches"
+  /players:
+    post:
+      x-skaffolder-id: 5ffe3028a3e049112323b16b
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-resource: Players
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Players
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Players"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Age:
+                  type: number
+                Equip:
+                  type: string
+                Height:
+                  type: number
+                Name:
+                  type: string
+                Number:
+                  type: number
+                Position:
+                  type: string
+                Weight:
+                  type: number
+    get:
+      x-skaffolder-id: 5ffe2ff3a3e049112323b165
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-resource: Players
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: ARRAY OF Players
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Players
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Players"
+  "/players/{id}":
+    delete:
+      x-skaffolder-id: 5ffe3028a3e049112323b16d
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-resource: Players
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Players
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5ffe2fe8a3e049112323b163
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-resource: Players
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: Players
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Players
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id Players
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Players"
+    post:
+      x-skaffolder-id: 5ffe301ca3e049112323b168
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-resource: Players
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: Players
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Players
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id Players
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Players"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Players"
+  "/players/findByName/{key}":
+    get:
+      x-skaffolder-id: 5ffe300ca3e049112323b166
+      x-skaffolder-name: findByName
+      x-skaffolder-id-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-resource: Players
+      x-skaffolder-crudAction: findByName
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION findByName
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /findByName/{key}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION findByName
+      tags:
+        - Players
+      parameters:
+        - name: key
+          x-skaffolder-type: String
+          in: path
+          description: Id of the resource Name to search
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Players"
+  /preferences:
+    post:
+      x-skaffolder-id: 5ffe39b3a3e049112323b1ba
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-resource: Preferences
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Preferences
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Preferences"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                positions:
+                  type: object
+                score:
+                  type: number
+                team_id:
+                  type: integer
+                user_id:
+                  type: integer
+    get:
+      x-skaffolder-id: 5ffe39b3a3e049112323b1c0
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-resource: Preferences
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Preferences
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Preferences"
+  "/preferences/{id}":
+    delete:
+      x-skaffolder-id: 5ffe39b3a3e049112323b1c1
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-resource: Preferences
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Preferences
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5ffe39b3a3e049112323b1bc
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-resource: Preferences
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Preferences
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Preferences"
+    post:
+      x-skaffolder-id: 5ffe39b3a3e049112323b1bb
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-resource: Preferences
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Preferences
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Preferences"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Preferences"
+  /teams:
+    post:
+      x-skaffolder-id: 5ffe31f7a3e049112323b17c
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-resource: Teams
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - Teams
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teams"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                color1:
+                  type: string
+                color2:
+                  type: string
+                country:
+                  type: string
+                founded:
+                  type: string
+                logo:
+                  type: string
+                name:
+                  type: string
+    get:
+      x-skaffolder-id: 5ffe31f7a3e049112323b183
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-resource: Teams
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - Teams
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Teams"
+  "/teams/{id}":
+    delete:
+      x-skaffolder-id: 5ffe31f7a3e049112323b182
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-resource: Teams
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5ffe31f7a3e049112323b17d
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-resource: Teams
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teams"
+    post:
+      x-skaffolder-id: 5ffe31f7a3e049112323b17e
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-resource: Teams
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - Teams
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teams"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Teams"
+  "/teams/findByname/{key}":
+    get:
+      x-skaffolder-id: 5ffe320ba3e049112323b185
+      x-skaffolder-name: findByname
+      x-skaffolder-id-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-resource: Teams
+      x-skaffolder-crudAction: findByname
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION findByname
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /findByname/{key}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION findByname
+      tags:
+        - Teams
+      parameters:
+        - name: key
+          x-skaffolder-type: String
+          in: path
+          description: Id of the resource name to search
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Teams"
+  "/user/{id}/changePassword":
+    post:
+      x-skaffolder-id: 5ffe2e2aa3e049112323b0ea
+      x-skaffolder-name: changePassword
+      x-skaffolder-id-resource: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: 
+      x-skaffolder-crudType: 
+      x-skaffolder-description: Change password of user from admin
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: object
+      x-skaffolder-url: /{id}/changePassword
+      x-skaffolder-roles:
+        - 5ffe2e2aa3e049112323b0e3
+      summary: Change password of user from admin
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+  /user:
+    post:
+      x-skaffolder-id: 5ffe2e2aa3e049112323b0eb
+      x-skaffolder-name: create
+      x-skaffolder-id-resource: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: create
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION create
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION create
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                password:
+                  type: string
+                roles:
+                  type: string
+                surname:
+                  type: string
+                username:
+                  type: string
+    get:
+      x-skaffolder-id: 5ffe2e2aa3e049112323b0e6
+      x-skaffolder-name: list
+      x-skaffolder-id-resource: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: list
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION list
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /
+      x-skaffolder-roles: []
+      summary: CRUD ACTION list
+      tags:
+        - User
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+  "/user/{id}":
+    delete:
+      x-skaffolder-id: 5ffe2e2aa3e049112323b0e5
+      x-skaffolder-name: delete
+      x-skaffolder-id-resource: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: delete
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION delete
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION delete
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+    get:
+      x-skaffolder-id: 5ffe2e2aa3e049112323b0e9
+      x-skaffolder-name: get
+      x-skaffolder-id-resource: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: get
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION get
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION get
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id resource
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+    post:
+      x-skaffolder-id: 5ffe2e2aa3e049112323b0e4
+      x-skaffolder-name: update
+      x-skaffolder-id-resource: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-resource: User
+      x-skaffolder-crudAction: update
+      x-skaffolder-crudType: 
+      x-skaffolder-description: CRUD ACTION update
+      x-skaffolder-returnDesc: 
+      x-skaffolder-returnType: 
+      x-skaffolder-url: /{id}
+      x-skaffolder-roles: []
+      summary: CRUD ACTION update
+      tags:
+        - User
+      parameters:
+        - name: id
+          x-skaffolder-type: ObjectId
+          in: path
+          description: Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+security:
+  - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    League:
+      x-skaffolder-id: 5ffe33c0a3e049112323b18e
+      x-skaffolder-id-db: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-id-entity: 5ffe33c0a3e049112323b188
+      x-skaffolder-url: /league
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        country:
+          type: string
+          x-skaffolder-id-attr: 5ffe33c0a3e049112323b18b
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        league_id:
+          type: integer
+          x-skaffolder-id-attr: 5ffe33c0a3e049112323b189
+          x-skaffolder-type: Integer
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5ffe33c0a3e049112323b18d
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        season:
+          type: integer
+          x-skaffolder-id-attr: 5ffe33c0a3e049112323b18c
+          x-skaffolder-type: Integer
+          x-skaffolder-required: true
+        team_id:
+          type: integer
+          x-skaffolder-id-attr: 5ffe33c0a3e049112323b18a
+          x-skaffolder-type: Integer
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - country
+        - league_id
+        - name
+        - season
+        - team_id
+    Matches:
+      x-skaffolder-id: 5ffe381da3e049112323b1a5
+      x-skaffolder-id-db: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-id-entity: 5ffe381ca3e049112323b19d
+      x-skaffolder-url: /matches
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        away_team:
+          type: string
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b1a4
+          x-skaffolder-type: String
+        home_team:
+          type: string
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b1a3
+          x-skaffolder-type: String
+        league_id:
+          type: integer
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b1a2
+          x-skaffolder-type: Integer
+        match_id:
+          type: integer
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b19e
+          x-skaffolder-type: Integer
+        match_start:
+          type: string
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b1a1
+          x-skaffolder-type: String
+        status:
+          type: integer
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b1a0
+          x-skaffolder-type: Integer
+        status_code:
+          type: integer
+          x-skaffolder-id-attr: 5ffe381ca3e049112323b19f
+          x-skaffolder-type: Integer
+      x-skaffolder-relations: 
+      required:
+        - _id
+    Players:
+      x-skaffolder-id: 5ffe2faaa3e049112323b15b
+      x-skaffolder-id-db: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-id-entity: 5ffe2fa9a3e049112323b153
+      x-skaffolder-url: /players
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        Age:
+          type: number
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b158
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        Equip:
+          type: string
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b156
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        Height:
+          type: number
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b159
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        Name:
+          type: string
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b154
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        Number:
+          type: number
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b157
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        Position:
+          type: string
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b155
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        Weight:
+          type: number
+          x-skaffolder-id-attr: 5ffe2fa9a3e049112323b15a
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - Age
+        - Equip
+        - Height
+        - Name
+        - Number
+        - Position
+        - Weight
+    Preferences:
+      x-skaffolder-id: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-id-db: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-id-entity: 5ffe39a9a3e049112323b1b2
+      x-skaffolder-url: /preferences
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        positions:
+          type: object
+          x-skaffolder-id-attr: 5ffe39a9a3e049112323b1b5
+          x-skaffolder-type: Custom
+          x-skaffolder-required: true
+        score:
+          type: number
+          x-skaffolder-id-attr: 5ffe39a9a3e049112323b1b6
+          x-skaffolder-type: Number
+          x-skaffolder-required: true
+        team_id:
+          type: integer
+          x-skaffolder-id-attr: 5ffe39a9a3e049112323b1b4
+          x-skaffolder-type: Integer
+          x-skaffolder-required: true
+        user_id:
+          type: integer
+          x-skaffolder-id-attr: 5ffe39a9a3e049112323b1b3
+          x-skaffolder-type: Integer
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - positions
+        - score
+        - team_id
+        - user_id
+    Teams:
+      x-skaffolder-id: 5ffe31f0a3e049112323b179
+      x-skaffolder-id-db: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-id-entity: 5ffe31efa3e049112323b171
+      x-skaffolder-url: /teams
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        color1:
+          type: string
+          x-skaffolder-id-attr: 5ffe31efa3e049112323b174
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        color2:
+          type: string
+          x-skaffolder-id-attr: 5ffe31efa3e049112323b175
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        country:
+          type: string
+          x-skaffolder-id-attr: 5ffe31efa3e049112323b176
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        founded:
+          type: string
+          x-skaffolder-id-attr: 5ffe31efa3e049112323b177
+          x-skaffolder-type: String
+        logo:
+          type: string
+          x-skaffolder-id-attr: 5ffe31efa3e049112323b173
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        name:
+          type: string
+          x-skaffolder-id-attr: 5ffe31efa3e049112323b172
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations:
+        players:
+          x-skaffolder-id: 5ffe31efa3e049112323b178
+          x-skaffolder-type: m:m
+          x-skaffolder-ent1: 5ffe31efa3e049112323b171
+          x-skaffolder-ent2: 5ffe2fa9a3e049112323b153
+      required:
+        - _id
+        - color1
+        - color2
+        - country
+        - logo
+        - name
+    User:
+      x-skaffolder-id: 5ffe2e29a3e049112323b0e1
+      x-skaffolder-id-db: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-id-entity: 5ffe2e29a3e049112323b0d9
+      x-skaffolder-url: /user
+      x-skaffolder-type: User
+      properties:
+        _id:
+          type: string
+          x-skaffolder-required: true
+        email:
+          type: string
+          x-skaffolder-id-attr: 5ffe2e29a3e049112323b0dc
+          x-skaffolder-type: String
+        name:
+          type: string
+          x-skaffolder-id-attr: 5ffe2e29a3e049112323b0dd
+          x-skaffolder-type: String
+        password:
+          type: string
+          x-skaffolder-id-attr: 5ffe2e29a3e049112323b0db
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        roles:
+          type: string
+          x-skaffolder-id-attr: 5ffe2e29a3e049112323b0df
+          x-skaffolder-type: String
+        surname:
+          type: string
+          x-skaffolder-id-attr: 5ffe2e29a3e049112323b0de
+          x-skaffolder-type: String
+        username:
+          type: string
+          x-skaffolder-id-attr: 5ffe2e29a3e049112323b0da
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+      x-skaffolder-relations: 
+      required:
+        - _id
+        - password
+        - username
+  x-skaffolder-db:
+    - x-skaffolder-id: 5ffe2e29a3e049112323b0d8
+      x-skaffolder-name: IQ_db
+  x-skaffolder-page:
+    - x-skaffolder-id: 5ffe2e29a3e049112323b0e0
+      x-skaffolder-name: Home
+      x-skaffolder-url: /home
+      x-skaffolder-template: 
+      x-skaffolder-resource: 
+      x-skaffolder-services: 
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5ffe3028a3e049112323b16c
+        - 5ffe31f7a3e049112323b181
+        - 5ffe33c5a3e049112323b196
+        - 5ffe3824a3e049112323b1ad
+        - 5ffe39b3a3e049112323b1bf
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe33c5a3e049112323b190
+      x-skaffolder-name: LeagueEdit
+      x-skaffolder-url: /leagues/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-services:
+        - 5ffe33c5a3e049112323b191
+        - 5ffe33c5a3e049112323b193
+        - 5ffe33c5a3e049112323b192
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe33c5a3e049112323b196
+      x-skaffolder-name: LeagueList
+      x-skaffolder-url: /leagues
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5ffe33c0a3e049112323b18e
+      x-skaffolder-services:
+        - 5ffe33c5a3e049112323b198
+        - 5ffe33c5a3e049112323b197
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5ffe33c5a3e049112323b190
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe3824a3e049112323b1a7
+      x-skaffolder-name: MatchesEdit
+      x-skaffolder-url: /matcheses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-services:
+        - 5ffe3824a3e049112323b1aa
+        - 5ffe3824a3e049112323b1a8
+        - 5ffe3824a3e049112323b1a9
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe3824a3e049112323b1ad
+      x-skaffolder-name: MatchesList
+      x-skaffolder-url: /matcheses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5ffe381da3e049112323b1a5
+      x-skaffolder-services:
+        - 5ffe3824a3e049112323b1af
+        - 5ffe3824a3e049112323b1ae
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5ffe3824a3e049112323b1a7
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe3028a3e049112323b16a
+      x-skaffolder-name: PlayersEdit
+      x-skaffolder-url: /playerses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-services:
+        - 5ffe3028a3e049112323b16b
+        - 5ffe301ca3e049112323b168
+        - 5ffe2fe8a3e049112323b163
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe3028a3e049112323b16c
+      x-skaffolder-name: PlayersList
+      x-skaffolder-url: /playerses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5ffe2faaa3e049112323b15b
+      x-skaffolder-services:
+        - 5ffe3028a3e049112323b16d
+        - 5ffe2ff3a3e049112323b165
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5ffe3028a3e049112323b16a
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe39b3a3e049112323b1b9
+      x-skaffolder-name: PreferencesEdit
+      x-skaffolder-url: /preferenceses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-services:
+        - 5ffe39b3a3e049112323b1ba
+        - 5ffe39b3a3e049112323b1bb
+        - 5ffe39b3a3e049112323b1bc
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe39b3a3e049112323b1bf
+      x-skaffolder-name: PreferencesList
+      x-skaffolder-url: /preferenceses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5ffe39a9a3e049112323b1b7
+      x-skaffolder-services:
+        - 5ffe39b3a3e049112323b1c1
+        - 5ffe39b3a3e049112323b1c0
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5ffe39b3a3e049112323b1b9
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe31f7a3e049112323b17b
+      x-skaffolder-name: TeamsEdit
+      x-skaffolder-url: /teamses/{id}
+      x-skaffolder-template: Edit_Crud
+      x-skaffolder-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-services:
+        - 5ffe31f7a3e049112323b17c
+        - 5ffe31f7a3e049112323b17e
+        - 5ffe31f7a3e049112323b17d
+        - 5ffe2ff3a3e049112323b165
+      x-skaffolder-nesteds: 
+      x-skaffolder-links: 
+      x-skaffolder-roles: []
+    - x-skaffolder-id: 5ffe31f7a3e049112323b181
+      x-skaffolder-name: TeamsList
+      x-skaffolder-url: /teamses
+      x-skaffolder-template: List_Crud
+      x-skaffolder-resource: 5ffe31f0a3e049112323b179
+      x-skaffolder-services:
+        - 5ffe31f7a3e049112323b182
+        - 5ffe31f7a3e049112323b183
+      x-skaffolder-nesteds: 
+      x-skaffolder-links:
+        - 5ffe31f7a3e049112323b17b
+      x-skaffolder-roles: []
+  x-skaffolder-roles: 
+    - x-skaffolder-id: 5ffe2e2aa3e049112323b0e3
+      x-skaffolder-name: ADMIN
